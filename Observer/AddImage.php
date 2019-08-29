@@ -1,5 +1,5 @@
 <?php
-namespace MageMontreal\CategoryWidget\Observer;
+namespace Bitpolar\CategoryImgWidget\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;

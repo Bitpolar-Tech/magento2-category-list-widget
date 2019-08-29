@@ -1,4 +1,4 @@
-# magento2-category-list-widget
+# magento2-category-list-with-thumbnail-widget
 
 #Features
 <ul>
@@ -8,23 +8,24 @@
 <li>Can Manage Image Size</li>
 <li>Can Assign Custom Parent Category</li>
 <li>Can list any category</li>
+<li>*NEW* Use additional thumbnail as Preview image</li>
 </ul>
 
 <h2>Composer Installation Instructions</h2>
 <pre>
-  composer require magemontreal/categorywidget
+  composer require bitpolar/categoryimgwidget
 </pre>
 
 
 <br/>
 
-<h3> Enable MageMontreal/CategoryWidget Module</h3>
+<h3> Enable Bitpolar/CategoryImgWidget Module</h3>
 to Enable this module you need to follow these steps:
 
 <ul>
 <li>
 <strong>Enable the Module</strong>
-<pre>bin/magento module:enable MageMontreal_CategoryWidget</pre></li>
+<pre>bin/magento module:enable Bitpolar_CategoryImgWidget</pre></li>
 <li>
 <strong>Run Upgrade Setup</strong>
 <pre>bin/magento setup:upgrade</pre></li>
@@ -33,4 +34,3 @@ to Enable this module you need to follow these steps:
 	<pre>bin/magento setup:di:compile</pre>
 </li>
 </ul>
-

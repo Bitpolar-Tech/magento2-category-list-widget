@@ -1,9 +1,9 @@
 <?php
-namespace MageMontreal\CategoryWidget\Block\Widget;
+namespace Bitpolar\CategoryImgWidget\Block\Widget;
 
-class CategoryWidget extends \Magento\Framework\View\Element\Template implements \Magento\Widget\Block\BlockInterface
+class CategoryImgWidget extends \Magento\Framework\View\Element\Template implements \Magento\Widget\Block\BlockInterface
 {
-    protected $_template = 'widget/categorywidget.phtml';
+    protected $_template = 'widget/categoryimgwidget.phtml';
 
     const DEFAULT_IMAGE_WIDTH = 250;
     const DEFAULT_IMAGE_HEIGHT = 250;
