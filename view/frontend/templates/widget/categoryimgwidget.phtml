@@ -1,19 +1,49 @@
 <?php
 $categories = $this->getCategoryCollection();
-$canShowImg = $this->canShowImage();
+$canShowCatImg = $this->canShowCatImage();
+$canShowThumbnail = $this->canShowThumbnail();
 $canShowName = $this->canShowName();
+
+// Placeholder image
+$imageHelper = $this->helper(\Magento\Catalog\Helper\Image::class);
+$placeholderImageUrl = $imageHelper->getDefaultPlaceholderUrl('image');
 ?>
 
 <div class="block-content catalog-category">
     <?php foreach ($categories as $category): ?>
         <div class="category">
-            <?php if ($canShowImg && $category->getImageUrl()): ?>
+            <?php if ($canShowCatImg): ?>
+
+                <?php
+                    if ($category->getImageUrl()) {
+                        $imgUrl = $category->getImageUrl();
+                    }else{
+                        $imgUrl = $placeholderImageUrl;
+                    }
+                ?>
                 <div class="category-image">
                     <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-                        <img src="<?php echo $block->escapeUrl($category->getImageUrl()) ?>" alt="<?php echo $block->escapeHtml($category->getName()) ?>" width="<?= $this->getImageWidth() ?>" height="<?= $this->getImageHeight() ?>"/>
+                        <img src="<?php echo $block->escapeUrl($imgUrl) ?>" alt="<?php echo $block->escapeHtml($category->getName()) ?>" width="<?= $this->getImageWidth() ?>" height="<?= $this->getImageHeight() ?>"/>
                     </a>
                 </div>
             <?php endif;?>
+
+            <?php if ($canShowThumbnail): ?>
+
+                <?php
+                    if ($category->getThumbnail()) {
+                        $imgUrl = $category->getImageUrl('thumbnail');
+                    }else{
+                        $imgUrl = $placeholderImageUrl;
+                    }
+                ?>
+                <div class="tumbnail-image">
+                    <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
+                        <img src="<?php echo $block->escapeUrl($imgUrl) ?>" alt="<?php echo $block->escapeHtml($category->getName()) ?>" width="<?= $this->getImageWidth() ?>" height="<?= $this->getImageHeight() ?>"/>
+                    </a>
+                </div>
+            <?php endif;?>
+
             <?php if ($canShowName): ?>
                 <div class="category-name">
                     <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">

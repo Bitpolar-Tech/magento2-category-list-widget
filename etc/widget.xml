@@ -3,16 +3,22 @@
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
 	<widget id="bitpolar_categorywidget" class="Bitpolar\CategoryImgWidget\Block\Widget\CategoryImgWidget">
 		<label translate="true">Category List Widget by Bitpolar</label>
-		<description>Store Default 1st level Category List Widget</description>
+		<description translate="true">Store Default 1st level Category List Widget</description>
 		<parameters>
 			<parameter name="display" xsi:type="select" required="true" visible="true">
 				<label translate="true">Display Type</label>
                 <options>
-                    <option name="default" value="image-name" selected="true">
-                        <label translate="true">Image and Name</label>
+                    <option name="default" value="cat-image-name" selected="true">
+                        <label translate="true">Category Image and Name</label>
                     </option>
-                    <option name="image" value="image">
-                        <label translate="true">Image Only</label>
+                    <option name="thumbnail-name" value="thumbnail-name" selected="true">
+                        <label translate="true">Thumbnail and Name</label>
+                    </option>
+                    <option name="cat-image" value="cat-image">
+                        <label translate="true">Category Image Only</label>
+                    </option>
+                    <option name="thumbnail" value="thumbnail">
+                        <label translate="true">Thumbnail Only</label>
                     </option>
 					<option name="name" value="name">
 						<label translate="true">Name Only</label>

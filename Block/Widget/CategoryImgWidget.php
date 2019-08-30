@@ -19,18 +19,41 @@ class CategoryImgWidget extends \Magento\Framework\View\Element\Template impleme
     protected $_categoryCollectionFactory;
 
     /**
+     * @var Product
+     */
+    protected $_category = null;
+
+    /**
+     * Core registry
+     *
+     * @var \Magento\Framework\Registry
+     */
+    protected $_coreRegistry = null;
+
+    /**
+     * @var \Bitpolar\CategoryImgWidget\Helper\Category
+     */
+    protected $_categoryHelper;
+
+    /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Catalog\Model\CategoryFactory $categoryFactory
+     * @param \Magento\Framework\Registry $registry
+     * @param \Bitpolar\CategoryImgWidget\Helper\Category $categoryHelper
      * @param array $data
      */
     public function __construct(
     \Magento\Framework\View\Element\Template\Context $context,
     \Magento\Catalog\Model\CategoryFactory $categoryFactory,
     \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
+    \Magento\Framework\Registry $registry,
+    \Bitpolar\CategoryImgWidget\Helper\Category $categoryHelper,
     array $data = []
     ) {
         $this->_categoryFactory = $categoryFactory;
         $this->_categoryCollectionFactory = $categoryCollectionFactory;
+        $this->_coreRegistry = $registry;
+        $this->_categoryHelper = $categoryHelper;
         parent::__construct($context, $data);
     }
 
@@ -60,7 +83,7 @@ class CategoryImgWidget extends \Magento\Framework\View\Element\Template impleme
 
         $childCategories
             ->addAttributeToFilter('is_active', 1)
-            ->addAttributeToSelect(['name', 'image'])
+            ->addAttributeToSelect(['name', 'image', 'thumbnail'])
             ->setOrder('position','ASC');
 
         if($this->getMenuOnly()) {
@@ -102,13 +125,37 @@ class CategoryImgWidget extends \Magento\Framework\View\Element\Template impleme
         return (int) $this->getData('imageheight');
     }
 
-    public function canShowImage()
+
+    /**
+     * Get the url of the category thumbnail image
+     *
+     * @return string
+     */
+    public function getThumbnailUrl()
     {
-        return in_array($this->getData('display'), ['image', 'image-name']);
+
+        $imageCode = $this->hasImageCode() ? $this->getImageCode() : 'image';
+
+        // $image = $this->getCurrentCategory()->getData($imageCode);
+        $data = $this->getData();
+
+        // return $this->_categoryHelper->getImageUrl($image);
+        return $data;
+    }
+
+
+    public function canShowCatImage()
+    {
+        return in_array($this->getData('display'), ['cat-image', 'cat-image-name']);
+    }
+
+    public function canShowThumbnail()
+    {
+        return in_array($this->getData('display'), ['thumbnail', 'thumbnail-name']);
     }
 
     public function canShowName()
     {
-        return in_array($this->getData('display'), ['name', 'image-name']);
+        return in_array($this->getData('display'), ['name', 'thumbnail-name', 'cat-image-name']);
     }
 }

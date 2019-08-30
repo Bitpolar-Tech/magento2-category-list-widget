@@ -13,6 +13,7 @@ https://github.com/MageMontreal/magento2-category-list-widget
 <li>Can Assign Custom Parent Category</li>
 <li>Can list any category</li>
 <li>*NEW* Use additional thumbnail as Preview image</li>
+<li>*NEW* Use placeholder if there is no image present</li>
 </ul>
 
 <h2>Composer Installation Instructions</h2>
