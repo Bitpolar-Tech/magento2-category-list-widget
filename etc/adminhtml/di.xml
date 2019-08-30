@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- extend controller to handle extra category image fields -->
+    <preference for="Magento\Catalog\Controller\Adminhtml\Category\Save" type="Bitpolar\CategoryImgWidget\Controller\Adminhtml\Category\Save"/>
+
+    <!-- extend data provider to handle extra category image fields -->
+    <preference for="Magento\Catalog\Model\Category\DataProvider" type="Bitpolar\CategoryImgWidget\Model\Category\DataProvider"/>
+
+    <type name="Bitpolar\CategoryImgWidget\Controller\Adminhtml\Category\Thumbnail\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
+        </arguments>
+    </type>
+
+</config>
