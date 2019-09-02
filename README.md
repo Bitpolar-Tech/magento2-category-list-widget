@@ -1,28 +1,24 @@
-# magento2-category-list-with-thumbnail-widget
+# Magento 2 Widget: Category List with optional thumbnail or category image
 
-Merged the following packages into one with some custom modifications:
-https://github.com/studioraz/magento2-category-image
+Based on<br/>
+https://github.com/studioraz/magento2-category-image<br/>
 https://github.com/MageMontreal/magento2-category-list-widget
 
 #Features
 <ul>
-<li>Add Category List Any Where</li>
-<li>Automatic Pick Default Store Category as Parent</li>
-<li>Category Image into List</li>
-<li>Can Manage Image Size</li>
-<li>Can Assign Custom Parent Category</li>
-<li>Can list any category</li>
-<li>*NEW* Use additional thumbnail as Preview image</li>
-<li>*NEW* Use placeholder if there is no image present</li>
+<li>Add category list as a widget</li>
+<li>Manage Image Size Output</li>
+<li>Assign Custom Parent Category</li>
+<li>Or list any category</li>
+<li>Add and use additional thumbnail as preview image</li>
+<li>Images are resized and cached to the user defined sizes</li>
+<li>Uses the placeholder image as default</li>
 </ul>
 
 <h2>Composer Installation Instructions</h2>
 <pre>
   composer require bitpolar/categoryimgwidget
 </pre>
-
-
-<br/>
 
 <h3> Enable Bitpolar/CategoryImgWidget Module</h3>
 to Enable this module you need to follow these steps:

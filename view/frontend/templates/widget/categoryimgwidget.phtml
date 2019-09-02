@@ -1,56 +1,59 @@
 <?php
-$categories = $this->getCategoryCollection();
-$canShowCatImg = $this->canShowCatImage();
-$canShowThumbnail = $this->canShowThumbnail();
-$canShowName = $this->canShowName();
+/**
+ * Bitpolar Technologies
+ *
+ ********************************************************************
+ *
+ * @category   Bitpolar
+ * @package    Bitpolar_CategoryImgWidget
+ * @author     Stefan Euchenhofer (info@bitpolar.de)
+ * @copyright  Copyright (c) 2019 Bitpolar Technologies (https://www.bitpolar.de)
+ */
+
+$categories         = $this->getCategoryCollection();
+$canShowCatImg      = $this->canShowCatImage();
+$canShowThumbnail   = $this->canShowThumbnail();
+$canShowName        = $this->canShowName();
+$imgClass           = '';
+$imgHeight          = $this->getImageHeight();
+$imgWidth           = $this->getImageWidth();
+
+$image = $this->helper('Bitpolar\CategoryImgWidget\Helper\Image');
 
 // Placeholder image
-$imageHelper = $this->helper(\Magento\Catalog\Helper\Image::class);
-$placeholderImageUrl = $imageHelper->getDefaultPlaceholderUrl('image');
+$imageHelper        = $this->helper(\Magento\Catalog\Helper\Image::class);
+$imgUrl             = $imageHelper->getDefaultPlaceholderUrl('image');
 ?>
 
 <div class="block-content catalog-category">
+    <ul class="category-list <?php if ($canShowCatImg || $canShowThumbnail): ?>with-images<?php endif;?>">
     <?php foreach ($categories as $category): ?>
-        <div class="category">
-            <?php if ($canShowCatImg): ?>
+        <li class="single-category">
 
-                <?php
-                    if ($category->getImageUrl()) {
-                        $imgUrl = $category->getImageUrl();
-                    }else{
-                        $imgUrl = $placeholderImageUrl;
+            <?php if ($canShowCatImg || $canShowThumbnail): ?>
+                <?php // Set Image URL
+                    if ($category->getImageUrl() && $canShowCatImg) {
+                        // $imgUrl = $category->getImageUrl();
+                        $imgUrl = $image->resize('/'.$category->getImageUrl(), $imgWidth*2, $imgHeight*2);
+                        $imgClass = 'category-image';
+                    } elseif ($category->getThumbnail() && $canShowThumbnail) {
+                        // $imgUrl = $category->getImageUrl('thumbnail');
+                        $imgUrl = $image->resize('/'.$category->getThumbnail(), $imgWidth*2, $imgHeight*2);
+                        $imgClass = 'thumbnail-image';
                     }
                 ?>
-                <div class="category-image">
-                    <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-                        <img src="<?php echo $block->escapeUrl($imgUrl) ?>" alt="<?php echo $block->escapeHtml($category->getName()) ?>" width="<?= $this->getImageWidth() ?>" height="<?= $this->getImageHeight() ?>"/>
-                    </a>
-                </div>
-            <?php endif;?>
-
-            <?php if ($canShowThumbnail): ?>
-
-                <?php
-                    if ($category->getThumbnail()) {
-                        $imgUrl = $category->getImageUrl('thumbnail');
-                    }else{
-                        $imgUrl = $placeholderImageUrl;
-                    }
-                ?>
-                <div class="tumbnail-image">
-                    <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-                        <img src="<?php echo $block->escapeUrl($imgUrl) ?>" alt="<?php echo $block->escapeHtml($category->getName()) ?>" width="<?= $this->getImageWidth() ?>" height="<?= $this->getImageHeight() ?>"/>
-                    </a>
-                </div>
+                <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>" class="<?php echo $imgClass ?>">
+                    <img src="<?php echo $block->escapeUrl($imgUrl) ?>" alt="<?php echo $block->escapeHtml($category->getName()) ?>" width="<?= $imgWidth ?>" height="<?= $imgHeight ?>"/>
+                </a>
             <?php endif;?>
 
             <?php if ($canShowName): ?>
-                <div class="category-name">
-                    <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-                        <?php echo $block->escapeHtml($category->getName()) ?>
-                    </a>
-                </div>
+                <a class="category-name" href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
+                    <?php echo $block->escapeHtml($category->getName()) ?>
+                </a>
             <?php endif;?>
-        </div>
+
+        </li>
     <?php endforeach; ?>
+    </ul>
 </div>
