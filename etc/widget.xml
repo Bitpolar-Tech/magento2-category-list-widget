@@ -2,7 +2,7 @@
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
 	<widget id="bitpolar_categorywidget" class="Bitpolar\CategoryImgWidget\Block\Widget\CategoryImgWidget">
-		<label translate="true">Category List Widget by Bitpolar</label>
+		<label translate="true">Category List</label>
 		<description translate="true">Store Default 1st level Category List Widget</description>
 		<parameters>
 			<parameter name="display" xsi:type="select" required="true" visible="true">
