@@ -1,0 +1,18 @@
+Thumbnail,Vorschaubild
+Category List,Liste mit Kategorien
+Store Default 1st level Category List Widget,Standard ist die erste Kategorieebene
+Display Type,Anzeigeart
+Category Image and Name,Kategoriebild und Bezeichnung
+Thumbnail and Name,Vorschaubild und Bezeichnung
+Category Image Only,Nur das Kategoriebild
+Thumbnail Only,Nur das Vorschaubild
+Name Only,Nur die Bezeichnung
+Only Display Categories Included in Menu,Nur Kategorien anzeigen die auch im Menü angezeigt werden
+Image Width,Bildbreite
+"Enter Image width Ex. 250 , do not suffix with px","In pixel jedoch ohne 'px' am Ende"
+Image Height,Bildhöhe
+"Enter Image Height Ex. 250 , do not suffix with px","In pixel jedoch ohne 'px' am Ende"
+Specific Parent Category ID,Spezifische Hauptkategorie ID's
+Default Category of Current Store will be used in case of Blank,Falls leer wird die Standardkategorie verwendet
+Specific Category IDs,Spezifische Kategorie ID's
+"If specified, ignores Parent Category ID and list only these specific categories","Falls ausgefüllt wird die Hauptkategorie ignoriert"
