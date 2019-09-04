@@ -22,7 +22,7 @@ $image = $this->helper('Bitpolar\CategoryImgWidget\Helper\Image');
 
 // Placeholder image
 $imageHelper        = $this->helper(\Magento\Catalog\Helper\Image::class);
-$imgUrl             = $imageHelper->getDefaultPlaceholderUrl('image');
+$placeholderImg     = $imageHelper->getDefaultPlaceholderUrl('image');
 ?>
 
 <div class="block-content catalog-category">
@@ -40,6 +40,8 @@ $imgUrl             = $imageHelper->getDefaultPlaceholderUrl('image');
                         // $imgUrl = $category->getImageUrl('thumbnail');
                         $imgUrl = $image->resize('/'.$category->getThumbnail(), $imgWidth*2, $imgHeight*2);
                         $imgClass = 'thumbnail-image';
+                    } else {
+                        $imgUrl = $placeholderImg;
                     }
                 ?>
                 <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>" class="<?php echo $imgClass ?>">
